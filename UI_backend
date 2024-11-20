@@ -1,0 +1,47 @@
+#!/bash/bin
+
+white='\033[7m'   
+clear='\033[m'
+underline='\e[4m'
+
+Head_text() {
+    text="$1"
+    width=$(tput cols)
+    padding=$(( (width - ${#text}) / 2 ))
+    endpad=$((( (width - ${#text}) / 2 )-1))
+    printf "$white %${padding}s%s%${endpad}s\n$clear" "" "$text"
+}
+
+Foot_text(){
+    text="$(date) "
+    width=$(tput cols)
+    padding=$(( (width - ${#text})-1))
+    printf "$white %${padding}s%s\n$clear" "" "$text"
+}
+
+center_text() {
+    text="$1"
+    width=$(tput cols)
+    padding=$(( (width - ${#text}) / 2 ))
+    printf "%${padding}s%s \n" "" "$text"
+}
+
+line_sweep(){
+    sleep 0.01
+    [[ $LINES ]] || LINES=$(tput lines)
+    [[ $COLUMNS ]] || COLUMNS=$(tput cols)
+    tput civis
+    for (( i=0; i<$LINES; i++ ))
+    do
+    clear
+    if [ $i -gt 0 ]
+    then
+    n=$(($i-1))
+    eval printf "$'\n%.0s'" {0..$n}
+    fi
+    eval printf %.1s '$((RANDOM & 1))'{1..$COLUMNS}
+    sleep 0.01
+    done
+    clear
+    tput cnorm
+}
