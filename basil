@@ -12,7 +12,10 @@ Head_text() {
     printf "$white %${hpadding}s%s%${hendpad}s\n$clear" "" "$htext"
 }
 
-Foot_text(){
+Foot(){
+    COL=$(tput cols)
+    ROW=$(tput lines)
+    tput cup $(( ROW - 1 ))
     ftext="$(date) "
     fwidth=$(tput cols)
     fpadding=$(( (fwidth - ${#ftext})-1))
