@@ -1,0 +1,82 @@
+#!/bash/bin
+
+white='\033[7m'   
+clear='\033[m'
+underline='\e[4m'
+
+Head_text() {
+    htext="$1"
+    hwidth=$(tput cols)
+    hpadding=$(( (hwidth - ${#htext}) / 2 ))
+    hendpad=$((( (hwidth - ${#htext}) / 2 )-1))
+    printf "$white %${hpadding}s%s%${hendpad}s\n$clear" "" "$htext"
+}
+
+Foot_text(){
+    ftext="$(date) "
+    fwidth=$(tput cols)
+    fpadding=$(( (fwidth - ${#ftext})-1))
+    printf "$white %${fpadding}s%s\n$clear" "" "$ftext"
+}
+
+Center_text() {
+    ctext="$1"
+    cwidth=$(tput cols)
+    cpadding=$(( (cwidth - ${#ctext}) / 2 ))
+    printf "%${cpadding}s%s \n" "" "$ctext"
+}
+
+Line_sweep(){
+    sleep 0.01
+    [[ $LINES ]] || LINES=$(tput lines)
+    [[ $COLUMNS ]] || COLUMNS=$(tput cols)
+    tput civis
+    for (( i=0; i<$LINES; i++ ))
+    do
+    clear
+    if [ $i -gt 0 ]
+    then
+    n=$(($i-1))
+    eval printf "$'\n%.0s'" {0..$n}
+    fi
+    eval printf %.1s '$((RANDOM & 1))'{1..$COLUMNS}
+    sleep 0.01
+    done
+    clear
+    tput cnorm
+}
+
+Form(){
+    lineno="$#"
+    max=0
+    for i in "$@"
+    do      
+        temp="$i"
+        wc=${#temp}
+        if [ "$wc" -gt "$max" ]
+        then
+            max="$wc"
+        fi
+    done
+    max=$(($max+5))
+    fwidth=$(tput cols)
+    fpadding=$(( (fwidth - ${max}) / 2 ))
+    fendpad=$((( (fwidth - ${max}) / 2 )-1))
+    finstartpadd=2
+    finendpadd=2
+    cont=0
+    echo ""
+    for i in "$@"
+    do
+        end=$(( cont==0 ? ┐ : | ))
+        temp="$i"
+        wc=${#temp}
+        finendpadd=$(( ($max-$wc)-5 ))
+        printf "%${fpadding}s$white %${finstartpadd}s %s%${finendpadd}s$clear" "" "$temp"
+        echo "$end"
+    done
+}
+
+Linspace(){
+
+}
