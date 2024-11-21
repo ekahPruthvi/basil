@@ -68,12 +68,31 @@ Form(){
     echo ""
     for i in "$@"
     do
-        end=$(( cont==0 ? ┐ : | ))
+        end="║"
+        if [ "$cont" -eq 0 ]
+        then
+            end="╗"
+        fi
+        cont=$(($cont+1))
         temp="$i"
         wc=${#temp}
         finendpadd=$(( ($max-$wc)-5 ))
         printf "%${fpadding}s$white %${finstartpadd}s %s%${finendpadd}s$clear" "" "$temp"
         echo "$end"
+        fline="╚"
+        if [ "$cont" -eq "$lineno" ]
+        then 
+            printf "%${fpadding}s"
+            for f in $(seq 1 "$((max - 2 ))" )
+            do
+                if [ "$f" -eq "$(( max - 2 ))" ]
+                then
+                    fline="╝"
+                fi
+                printf "$fline"
+                fline="═"
+            done
+        fi
     done
 }
 
