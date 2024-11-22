@@ -41,7 +41,7 @@ On_Yellow='\033[43m'      # Yellow
 On_Blue='\033[44m'        # Blue
 On_Purple='\033[45m'      # Purple
 On_Cyan='\033[46m'        # Cyan
-On_White='\033[47m'       # White
+On_White='\033[7m'        # White
 
 # High Intensity
 IBlack='\033[0;90m'       # Black
@@ -93,9 +93,9 @@ Foot(){
 }
 
 Center_text() {
-    ctext="$1"
-    cwidth=$(tput cols)
-    cpadding=$(( (cwidth - ${#ctext}) / 2 ))
+    local ctext="$1"
+    local cwidth=$(tput cols)
+    local cpadding=$(( (cwidth - ${#ctext}) / 2 ))
     printf "%${cpadding}s%s \n" "" "$ctext"
 }
 
@@ -120,28 +120,28 @@ Line_sweep(){
 }
 
 Form(){
-    lineno="$#"
-    max=0
+    local lineno="$#"
+    local max=0
     for i in "$@"
     do      
-        temp="$i"
-        wc=${#temp}
+        local temp="$i"
+        local wc=${#temp}
         if [ "$wc" -gt "$max" ]
         then
             max="$wc"
         fi
     done
     max=$(($max+5))
-    fwidth=$(tput cols)
-    fpadding=$(( (fwidth - ${max}) / 2 ))
-    fendpad=$((( (fwidth - ${max}) / 2 )-1))
-    finstartpadd=2
-    finendpadd=2
-    cont=0
+    local fwidth=$(tput cols)
+    local fpadding=$(( (fwidth - ${max}) / 2 ))
+    local fendpad=$((( (fwidth - ${max}) / 2 )-1))
+    local finstartpadd=2
+    local finendpadd=2
+    local cont=0
     echo ""
     for i in "$@"
     do
-        end="║"
+        local end="║"
         if [ "$cont" -eq 0 ]
         then
             end="╗"
@@ -152,7 +152,7 @@ Form(){
         finendpadd=$(( ($max-$wc)-5 ))
         printf "%${fpadding}s$On_White$UWhite %${finstartpadd}s %s%${finendpadd}s$clear" "" "$temp"
         echo "$end"
-        fline="╚"
+        local fline="╚"
         if [ "$cont" -eq "$lineno" ]
         then 
             printf "%${fpadding}s"
@@ -170,30 +170,30 @@ Form(){
 }
 
 Fillaform(){
-    lineno="$#"
-    max=0
+    local lineno="$#"
+    local max=0
     for i in "$@"
     do      
-        temp="$i"
-        wc=${#temp}
+        local temp="$i"
+        local wc=${#temp}
         if [ "$wc" -gt "$max" ]
         then
             max="$wc"
         fi
     done
     max=$(($max+5))
-    fwidth=$(tput cols)
-    fpadding=$(( (fwidth - ${max}) / 2 ))
-    fendpad=$((( (fwidth - ${max}) / 2 )-1))
-    cont=0
+    local fwidth=$(tput cols)
+    local fpadding=$(( (fwidth - ${max}) / 2 ))
+    local fendpad=$((( (fwidth - ${max}) / 2 )-1))
+    local cont=0
     echo ""
     echo ""
     for i in "$@"
     do
-        finstartpadd=2
-        finendpadd=2
+        local finstartpadd=2
+        local finendpadd=2
         temp="$i"
-        end="║"
+        local end="║"
         if [ "$cont" -eq 0 ]
         then
             end="╗"
@@ -204,7 +204,7 @@ Fillaform(){
         finendpadd=$(( ($max-$wc)-5 ))
         printf "%${fpadding}s$BIWhite %${finstartpadd}s %s%${finendpadd}s$clear" "" "$temp"
         echo "$end"
-        fline="╚"
+        local fline="╚"
         if [ "$cont" -eq "$lineno" ]
         then 
             printf "%${fpadding}s"
@@ -223,5 +223,9 @@ Fillaform(){
 }
 
 Linspace(){
-    lines=
+    local lines="$1"
+    for line in $(seq 0 "$1")
+    do
+        echo ""
+    done
 }
