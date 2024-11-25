@@ -89,7 +89,7 @@ Foot(){
     local ftext="$(date) "
     local fwidth=$(tput cols)
     local fpadding=$(( (fwidth - ${#ftext})-1))
-    printf "$On_White %${fpadding}s%s\n$clear" "" "$ftext"
+    printf "$On_White %${fpadding}s%s$clear" "" "$ftext"
 }
 
 Center_text() {
