@@ -73,7 +73,11 @@ On_IPurple='\033[0;105m'  # Purple
 On_ICyan='\033[0;106m'    # Cyan
 On_IWhite='\033[0;107m'   # White
 
+# Default Variables 
+bg="$On_White"
+ul="$UWhite"
 
+# This is the header
 Head_text() {
     local htext="$1"
     local hwidth=$(tput cols)
@@ -82,6 +86,7 @@ Head_text() {
     printf "$On_White %${hpadding}s%s%${hendpad}s\n$clear" "" "$htext"
 }
 
+# This is the footer
 Foot(){
     local COL=$(tput cols)
     local ROW=$(tput lines)
@@ -92,6 +97,7 @@ Foot(){
     printf "$On_White %${fpadding}s%s$clear" "" "$ftext"
 }
 
+# Display the text in center
 Center_text() {
     local ctext="$1"
     local cwidth=$(tput cols)
@@ -99,6 +105,7 @@ Center_text() {
     printf "%${cpadding}s%s \n" "" "$ctext"
 }
 
+# Animation and clear screen
 Line_sweep(){
     sleep 0.01
     [[ $LINES ]] || LINES=$(tput lines)
@@ -118,6 +125,9 @@ Line_sweep(){
     clear
     tput cnorm
 }
+
+# This is a form, and it is customizable changing colors and the underline
+# To edit teh colors, pls chnage the 
 
 Form(){
     local lineno="$#"
@@ -150,7 +160,7 @@ Form(){
         temp="$i"
         wc=${#temp}
         finendpadd=$(( ($max-$wc)-5 ))
-        printf "%${fpadding}s$On_White$UWhite %${finstartpadd}s %s%${finendpadd}s$clear" "" "$temp"
+        printf "%${fpadding}s$bg$ul %${finstartpadd}s %s%${finendpadd}s$clear" "" "$temp"
         echo "$end"
         local fline="╚"
         if [ "$cont" -eq "$lineno" ]

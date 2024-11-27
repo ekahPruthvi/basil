@@ -1,2 +1,2 @@
 #!/bin/bash
-kitty -d=~/Documents/bashUI -e ./test.sh
+kitty -d=~/Documents/UI -e ./test.sh 
