@@ -127,11 +127,12 @@ Line_sweep(){
 }
 
 # This is a form, and it is customizable changing colors and the underline
-# To edit teh colors, pls chnage the 
+# To edit teh colors, pls chnage the color variables (bg and ul)
+# The Form has a min padding threshold of 50 charecters
 
 Form(){
     local lineno="$#"
-    local max=0
+    local max=50
     for i in "$@"
     do      
         local temp="$i"
