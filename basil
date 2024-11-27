@@ -268,11 +268,10 @@ Fillaform(){
 }
 
 Links(){
-    local link="$1"
-    local hwidth=$(tput cols)
-    local hpadding=$(( (hwidth - ${#htext}) / 2 ))
-    local hendpad=$((( (hwidth - ${#htext}) / 2 )-1))
-    printf "$On_White$BIWhite %${hpadding}s%s%${hendpad}s\n$clear" "" "$htext"
+    printf "${UBlue}"
+    local placeholder='\e]8;;'${1}'\e\\'${2}'\e]8;;\e\\'
+    echo -e $placeholder
+    printf "${clear}"
 }
 
 Linspace(){

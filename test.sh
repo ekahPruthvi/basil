@@ -54,6 +54,6 @@ read inp
 
 Linspace 3
 
-echo -e '\e]8;;https://github.com/ekahPruthvi\e\\ekahPruthvi - Github\e]8;;\e\\'
+Links "https://github.com/ekahPruthvi" "This is a link"
 
 Foot && read && pkill kitty
