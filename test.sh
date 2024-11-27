@@ -12,7 +12,7 @@ Head_text "BASIL DEMO"
 
 # heading
 printf "\n\n${BIWhite}UI built using basil ${clear}\nBasil is a UI Toolkit for writing Shell scripts\nThis is a demo to show the funtionality of basil\n"
-printf "basil uses ${UWhite}pesto${clear} it contains all the color variables\n The color variables can be used to change the basic attributes of"
+printf "\nbasil uses ${UWhite}pesto${clear} it contains all the color variables\nThe color variables can be used to change the basic attributes of the text(Bold, Italic, Underline)"
 Linspace 2
 
 # Centering text
@@ -22,21 +22,20 @@ Linspace 1
 
 # Form demo
 printf "${BWhite}${UWhite}FORMS${clear}\nForms has two attributes bg and ul\n ${TWhite}bg${clear} - This gives the background color for the form\n ${TWhite}ul${clear} - It can be used either to change The text color along with \n      the underline or ${BWhite}Remove the underline and use diffrent colors or text properties (Blod or Italic or Thin)${clear}\n"
-Form "This is a Form" "This makes pastas" "and its color can be changed"
-
+Form "This is a Form" "and its color can be changed" "pesto doesn't work inside of forms" "By default if the values of bg and ul" "has not been changed then," "It stays in black text over white background\n"
 Linspace 1
 
 bg="$On_Cyan"
 ul="$UBlack"
-Form "Multiple forms with" "With diffrent colors Example" "And to showcase box width, It changes according to characters"
+Form "Forms have fixed width" "but if The charecters exceed the limit the width increases accordingly" "With diffrent colors Example" "And to showcase box width, It changes according to characters"
 Linspace 1
 
-Form "testing" "Here No color value hav been given" "so, The old values retain"
+Form "Testing retaing behaviour of Forms" "Here No color value hav been given" "so, The old values retain"
 Linspace 2
 
 bg="$On_Pink"
-ul="$UBlack"
-Form "Testing" "Pink form" "With black text"
+ul="$TBlack"
+Form "No underline Form" "Pink form" "With faint black text and no underline"
 
 # create new page___________________________________________________________________________________________________
 Foot && read && Line_sweep
@@ -54,5 +53,7 @@ printf "Enter choice here: "
 read inp
 
 Linspace 3
+
+echo -e '\e]8;;https://github.com/ekahPruthvi\e\\ekahPruthvi - Github\e]8;;\e\\'
 
 Foot && read && pkill kitty

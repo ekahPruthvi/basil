@@ -267,6 +267,14 @@ Fillaform(){
     printf "\n %${fpadding}s"
 }
 
+Links(){
+    local link="$1"
+    local hwidth=$(tput cols)
+    local hpadding=$(( (hwidth - ${#htext}) / 2 ))
+    local hendpad=$((( (hwidth - ${#htext}) / 2 )-1))
+    printf "$On_White$BIWhite %${hpadding}s%s%${hendpad}s\n$clear" "" "$htext"
+}
+
 Linspace(){
     local lines="$1"
     for line in $(seq 0 "$1")
@@ -274,3 +282,5 @@ Linspace(){
         echo ""
     done
 }
+
+# ekahPruthvi
