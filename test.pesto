@@ -12,7 +12,8 @@ Head_text "BASIL DEMO"
 
 # heading
 printf "\n\n${BIWhite}UI built using basil ${clear}\nBasil is a UI Toolkit for writing Shell scripts\nThis is a demo to show the funtionality of basil\n"
-printf "\nbasil uses ${UWhite}pesto${clear} it contains all the color variables\nThe color variables can be used to change the basic attributes of the text(Bold, Italic, Underline)"
+printf "\nbasil uses ${UWhite}pesto${clear} it contains all the color variables\nThe color variables can be used to 
+        change the basic attributes of the text(Bold, Italic, Underline)"
 Linspace 2
 
 # Centering text
@@ -21,7 +22,9 @@ Center_text "Underlining or adding diffrent colors does not work while the text 
 Linspace 1
 
 # Form demo
-printf "${BWhite}${UWhite}FORMS${clear}\nForms has two attributes bg and ul\n ${TWhite}bg${clear} - This gives the background color for the form\n ${TWhite}ul${clear} - It can be used either to change The text color along with \n      the underline or ${BWhite}Remove the underline and use diffrent colors or text properties (Blod or Italic or Thin)${clear}\n"
+printf "${BWhite}${UWhite}FORMS${clear}\nForms has two attributes bg and ul\n ${TWhite}bg${clear} - This gives the background color for the form\n ${TWhite}ul${clear} - 
+        It can be used either to change The text color along with \n
+              the underline or ${BWhite}Remove the underline and use diffrent colors or text properties (Blod or Italic or Thin)${clear}\n"
 Form "This is a Form" "and its color can be changed" "pesto doesn't work inside of forms" "By default if the values of bg and ul" "has not been changed then," "It stays in black text over white background\n"
 Linspace 1
 
