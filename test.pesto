@@ -43,7 +43,6 @@ Head_text "Second Page"
 Linspace 2
 
 Center_text "Page to Show Fillable Forms"
-printf ""
 
 #Fillaform demo
 Fillaform "First parameter is Heading:" "   " "This is fillable form," "Give three black spaces if u want to give linespace" "you can give input in this and it'll be recoded" 
@@ -51,8 +50,11 @@ printf "Enter choice here: "
 read inp
 Linspace 3
 
-printf ""
+printf "This is the basic format for writing a ${TWhite}.pesto${clear} file\nIt is recomended to give ${TWhite}Linspace${clear} after every form\n"
+printf "And to make blocks for each widget,\nEach block contains - The color variables(${TWhite}bg,ul${clear})\n\t\t      Widget(${TWhite}Form or Fillaform${clear}) And Widget(${TWhite}Form or Fillaform${clear})\n\t\t      And Linspace."
+Linspace 1
 
+printf "Links are simple widgets which display a link with alt text.\nBy default links are in blue color and underlined to diffrentiate them.\n"
 Links "https://github.com/ekahPruthvi" "This is a link"
 
 Foot && read && pkill kitty
