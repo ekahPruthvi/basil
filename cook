@@ -1,0 +1,7 @@
+#!/bin/bash
+basil=$(sudo find ~/ -name "basil") 
+pesto="$1"
+cat $basil > ui.sh
+echo "" >> ui.sh
+cat $pesto >> ui.sh
+chmod +x ui.sh

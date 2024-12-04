@@ -1,9 +1,4 @@
-#!/bin/bash
-
-source "basil"
-
 Line_sweep
-
 # It is mandetory to give the color values if once chnaged, 
 Head_text "BASIL DEMO"
 
