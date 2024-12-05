@@ -142,23 +142,7 @@ Center_text() {
 
 # Animation and clear screen
 Line_sweep(){
-    sleep 0.01
-    [[ $LINES ]] || LINES=$(tput lines)
-    [[ $COLUMNS ]] || COLUMNS=$(tput cols)
-    tput civis
-    for (( i=0; i<$LINES; i++ ))
-    do
-    clear
-    if [ $i -gt 0 ]
-    then
-    n=$(($i-1))
-    eval printf "$'\n%.0s'" {0..$n}
-    fi
-    eval printf %.1s '$((RANDOM & 1))'{1..$COLUMNS}
-    sleep 0.01
-    done
-    clear
-    tput cnorm
+    
 }
 
 # This is a form, and it is customizable changing colors and the underline
@@ -248,7 +232,7 @@ Fillaform(){
         cont=$(($cont+1))
         wc=${#temp}
         finendpadd=$(( ($max-$wc)-5 ))
-        printf "%${fpadding}s$BIGreen %${finstartpadd}s %s%${finendpadd}s$On_Green" "" "$temp"
+        printf "%${fpadding}s$BIGreen %${finstartpadd}s %s%${finendpadd}s$clear" "" "$temp"
         echo "$end"
         local fline="╚"
         if [ "$cont" -eq "$lineno" ]
@@ -302,77 +286,3 @@ Tables_show(){
 printf "$On_Green"
 
 # ekahPruthvi - SCU
-Line_sweep
-# It is mandetory to give the color values if once chnaged, 
-Head_text "BASIL DEMO"
-
-# heading
-printf "\n\n${BIWhite}UI built using basil ${clear}\nBasil is a UI Toolkit for writing Shell scripts\nThis is a demo to show the funtionality of basil\n"
-printf "\nbasil uses ${UWhite}pesto${clear} it contains all the color variables\nThe color variables can be used to 
-        change the basic attributes of the text(Bold, Italic, Underline)"
-Linspace 2
-
-# Centering text
-Center_text "The Text can also be centered"
-Center_text "Underlining or adding diffrent colors does not work while the text is centered"
-Linspace 1
-
-# Form demo
-printf "${BWhite}${UWhite}FORMS${clear}\nForms has two attributes bg and ul\n ${TWhite}bg${clear} - This gives the background color for the form\n ${TWhite}ul${clear} - It can be used either to change The text color along with \n      the underline or ${BWhite}Remove the underline and use diffrent colors or text properties (Blod or Italic or Thin)${clear}\n"
-Form "This is a Form" "and its color can be changed" "pesto doesn't work inside of forms" "By default if the values of bg and ul" "has not been changed then," "It stays in black text over white background\n"
-Linspace 1
-
-bg="$On_Cyan"
-ul="$UBlack"
-Form "Forms have fixed width" "but if The charecters exceed the limit, the width increases accordingly" "With diffrent colors Example" "And to showcase box width, It changes according to characters"
-Linspace 1
-
-Form "Testing retaing behaviour of Forms" "Here No color value hav been given" "so, The old values retain"
-Linspace 2
-
-bg="$On_Pink"
-ul="$TBlack"
-Form "No underline Form" "Pink form" "With faint black text and no underline"
-
-# create new page___________________________________________________________________________________________________
-Foot && read && Line_sweep
-
-Head_text "Second Page"
-Linspace 2
-
-Center_text "Page to Show Fillable Forms"
-
-#Fillaform demo
-Fillaform "First parameter is Heading:" "   " "This is fillable form," "Give three black spaces if u want to give linespace" "you can give input in this and it'll be recoded" 
-printf "Enter choice here: "
-read inp
-Linspace 3
-
-printf "This is the basic format for writing a ${TWhite}.pesto${clear} file\nIt is recomended to give ${TWhite}Linspace${clear} after every form\n"
-printf "And to make blocks for each widget,\nEach block contains - The color variables(${TWhite}bg,ul${clear})\n\t\t      Widget(${TWhite}Form or Fillaform${clear}) And Widget(${TWhite}Form or Fillaform${clear})\n\t\t      And Linspace."
-Linspace 1
-
-printf "Links are simple widgets which display a link with alt text.\nBy default links are in blue color and underlined to diffrentiate them.\n"
-Links "https://github.com/ekahPruthvi" "This is a link"
-
-Linspace 3
-
-# creating new page___________________________________________________________________________________________________
-Foot && read && Line_sweep
-
-Head_text "Third page"
-Linspace 2
-
-Center_text "Page to demonstrate tables"
-
-
-rowh=("first" "second" "third" "fourth")
-colh=("yes" "no" "maybe" "somthing")
-alpharaw='a,b,c,d
-e,f,g
-h,i,,k
-l,,n,o'
-Tables 4 5 "$alpharaw"
-Tables_show
-
-Foot && read && pkill kitty

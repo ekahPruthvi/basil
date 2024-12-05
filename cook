@@ -24,5 +24,12 @@ elif [ $# -eq 1 ]; then
     cat $pesto >> ui.sh
     chmod +x ui.sh
 else
-    echo "WIP"
+    if [ "$1" == "-r" ]; then
+        basil=$(sudo find ~/ -name "ancient_basil") 
+        pesto="$2"
+        cat $basil > ui.sh
+        echo "" >> ui.sh
+        cat $pesto >> ui.sh
+        chmod +x ui.sh
+    fi
 fi
