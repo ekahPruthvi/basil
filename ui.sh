@@ -282,7 +282,7 @@ Linspace(){
     done
 }
 
-# ekahPruthvi
+# ekahPruthvi - SCU
 Line_sweep
 # It is mandetory to give the color values if once chnaged, 
 Head_text "BASIL DEMO"

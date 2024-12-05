@@ -1,7 +1,28 @@
 #!/bin/bash
-basil=$(sudo find ~/ -name "basil") 
-pesto="$1"
-cat $basil > ui.sh
-echo "" >> ui.sh
-cat $pesto >> ui.sh
-chmod +x ui.sh
+Center_text() {
+    local ctext="$1"
+    local cwidth=$(tput cols)
+    local cpadding=$(( (cwidth - ${#ctext}) / 2 ))
+    printf "%${cpadding}s%s \n" "" "$ctext"
+}
+
+if [ $# -eq 0 ]; then
+    Center_text "Basil - UI for The Terminal"
+    Center_text "The is a help message"
+    printf "Usage:\n"
+    printf "    cook [option] <file.pesto>\n"
+    printf "\noptions:\n"
+    printf "(Leave options plain for default)\n"
+    printf "    -rt - retro mode\n"
+    printf "    -bw - black and white\n" 
+
+elif [ $# -eq 1 ]; then
+    basil=$(sudo find ~/ -name "basil") 
+    pesto="$1"
+    cat $basil > ui.sh
+    echo "" >> ui.sh
+    cat $pesto >> ui.sh
+    chmod +x ui.sh
+else
+    echo "WIP"
+fi
