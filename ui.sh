@@ -282,6 +282,35 @@ Linspace(){
     done
 }
 
+Tables(){
+    local num_rows="$1"
+    local num_columns="$2"
+    declare -A matrix
+
+    for ((i=1;i<=num_rows;i++)) do
+        for ((j=1;j<=num_columns;j++)) do
+            matrix[$i,$j]="---"
+        done
+    done
+
+    f1="%$((${#num_rows}+1))s"
+    f2=" %9s"
+
+    printf "$f1" ''
+    for ((i=1;i<=num_rows;i++)) do
+        printf "$f2" $i
+    done
+    echo
+
+    for ((j=1;j<=num_columns;j++)) do
+        printf "$f1" $j
+        for ((i=1;i<=num_rows;i++)) do
+            printf "$f2" ${matrix[$i,$j]}
+        done
+        echo
+    done
+}
+
 # ekahPruthvi - SCU
 Line_sweep
 # It is mandetory to give the color values if once chnaged, 
@@ -336,5 +365,7 @@ Linspace 1
 
 printf "Links are simple widgets which display a link with alt text.\nBy default links are in blue color and underlined to diffrentiate them.\n"
 Links "https://github.com/ekahPruthvi" "This is a link"
+
+Tables 4 5
 
 Foot && read && pkill kitty

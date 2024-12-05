@@ -282,4 +282,33 @@ Linspace(){
     done
 }
 
+Tables(){
+    local num_rows="$1"
+    local num_columns="$2"
+    declare -A matrix
+
+    for ((i=1;i<=num_rows;i++)) do
+        for ((j=1;j<=num_columns;j++)) do
+            matrix[$i,$j]="---"
+        done
+    done
+
+    f1="%$((${#num_rows}+1))s"
+    f2=" %9s"
+
+    printf "$f1" ''
+    for ((i=1;i<=num_rows;i++)) do
+        printf "$f2" $i
+    done
+    echo
+
+    for ((j=1;j<=num_columns;j++)) do
+        printf "$f1" $j
+        for ((i=1;i<=num_rows;i++)) do
+            printf "$f2" ${matrix[$i,$j]}
+        done
+        echo
+    done
+}
+
 # ekahPruthvi - SCU
