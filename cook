@@ -13,8 +13,8 @@ if [ $# -eq 0 ]; then
     printf "    cook [option] <file.pesto>\n"
     printf "\noptions:\n"
     printf "(Leave options plain for default)\n"
-    printf "    -rt - retro mode\n"
-    printf "    -bw - black and white\n" 
+    printf "    -r - retro mode\n"
+    printf "    -b - black and white\n" 
 
 elif [ $# -eq 1 ]; then
     basil=$(sudo find ~/ -name "basil") 
@@ -26,6 +26,14 @@ elif [ $# -eq 1 ]; then
 else
     if [ "$1" == "-r" ]; then
         basil=$(sudo find ~/ -name "ancient_basil") 
+        pesto="$2"
+        cat $basil > ui.sh
+        echo "" >> ui.sh
+        cat $pesto >> ui.sh
+        chmod +x ui.sh
+    fi
+    if [ "$1" == "-r" ]; then
+        basil=$(sudo find ~/ -name "chess_basil") 
         pesto="$2"
         cat $basil > ui.sh
         echo "" >> ui.sh

@@ -53,22 +53,4 @@ Links "https://github.com/ekahPruthvi" "This is a link"
 
 Linspace 3
 
-# creating new page___________________________________________________________________________________________________
-Foot && read && Line_sweep
-
-Head_text "Third page"
-Linspace 2
-
-Center_text "Page to demonstrate tables"
-
-
-rowh=("first" "second" "third" "fourth")
-colh=("yes" "no" "maybe" "somthing")
-alpharaw='a,b,c,d
-e,f,g
-h,i,,k
-l,,n,o'
-Tables 4 5 "$alpharaw"
-Tables_show
-
 Foot && read && pkill kitty

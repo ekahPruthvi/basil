@@ -7,7 +7,7 @@
 ######################################################################################
 
 # Reset
-clear='\033[0m'       # Text Reset
+clear='\033[1;92m'       # Text Reset
 
 
 # Regular Colors
@@ -56,20 +56,20 @@ SPink='\033[3;95m'        # light Magenta
 
 
 # Underline
-UBlack='\033[4;30m'       # Black
-URed='\033[4;31m'         # Red
-UGreen='\033[4;32m'       # Green
-UYellow='\033[4;33m'      # Yellow
-UBlue='\033[4;34m'        # Blue
-UPurple='\033[4;35m'      # Purple
-UCyan='\033[4;36m'        # Cyan
-UWhite='\033[4;37m'       # White
-UPink='\033[4;95m'       # light Magenta
+UBlack='\033[1;92m'       # Black
+URed='\033[1;92m'         # Red
+UGreen='\033[1;92m'       # Green
+UYellow='\033[1;92m'      # Yellow
+UBlue='\033[1;92m'        # Blue
+UPurple='\033[1;92m'      # Purple
+UCyan='\033[1;92m'        # Cyan
+UWhite='\033[1;92m'       # White
+UPink='\033[1;92m'       # light Magenta
 
 # Background
 On_Black='\033[40m'       # Black
 On_Red='\033[41m'         # Red
-On_Green='\033[42m'       # Green
+On_Green='\033[1;92m'       # Green
 On_Yellow='\033[43m'      # Yellow
 On_Blue='\033[44m'        # Blue
 On_Purple='\033[45m'      # Purple
@@ -114,11 +114,13 @@ ul="$UBlack"
 
 # This is the header
 Head_text() {
-    local htext="$1"
+    local htext="┌──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┐"
     local hwidth=$(tput cols)
     local hpadding=$(( (hwidth - ${#htext}) / 2 ))
     local hendpad=$((( (hwidth - ${#htext}) / 2 )-1))
-    printf "$On_White$BIWhite %${hpadding}s%s%${hendpad}s\n$clear" "" "$htext"
+    printf "$BIGreen %${hpadding}s         ⮟\n"
+    printf "%${hpadding}s┌──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┐\n"
+    printf "%${hpadding}s0     1     2     3     4     5     6     7\n"
 }
 
 # This is the footer
@@ -129,7 +131,7 @@ Foot(){
     local ftext="$(date) "
     local fwidth=$(tput cols)
     local fpadding=$(( (fwidth - ${#ftext})-15))
-    printf "$On_White$BIWhite %${fpadding}s%s$clear" "" "Press Enter | $ftext"
+    printf "$BIGreen %${fpadding}s%s$clear" "" "Press Enter | $ftext"
 }
 
 # Display the text in center
@@ -142,7 +144,43 @@ Center_text() {
 
 # Animation and clear screen
 Line_sweep(){
-    
+    clear
+    local ctext="█▀▀▀▀▀▀▀▀▀▀▀▀▀▀█"
+    local cwidth=$(tput cols)
+    local cpadding=$(( (cwidth - ${#ctext}) / 2 ))
+    for ((i=0;i<5;i++)) do
+        printf "%${cpadding}s\033[?25l█▀▀▀▀▀▀▀▀▀▀▀▀▀▀█\n"
+        printf "%${cpadding}s█▄▄▄▄▄▄▄▄▄▄▄▄▄▄█\n"
+        sleep 0.02
+        clear
+        printf "%${cpadding}s███████▀▀▀▀▀▀▀▀█\n"
+        printf "%${cpadding}s███████▄▄▄▄▄▄▄▄█\n"
+        sleep 0.1
+        clear
+        printf "%${cpadding}s█▀██████▀▀▀▀▀▀▀█\n"
+        printf "%${cpadding}s█▄██████▄▄▄▄▄▄▄█\n"
+        sleep 0.1
+        clear
+        printf "%${cpadding}s█▀▀██████▀▀▀▀▀▀█\n"
+        printf "%${cpadding}s█▄▄██████▄▄▄▄▄▄█\n"
+        sleep 0.1
+        clear
+        printf "%${cpadding}s█▀▀▀▀▀██████▀▀▀█\n"
+        printf "%${cpadding}s█▄▄▄▄▄██████▄▄▄█\n"
+        sleep 0.1
+        clear
+        printf "%${cpadding}s█▀▀▀▀▀▀▀██████▀█\n"
+        printf "%${cpadding}s█▄▄▄▄▄▄▄██████▄█\n"
+        sleep 0.1
+        clear
+        printf "%${cpadding}s█▀▀▀▀▀▀▀▀███████\n"
+        printf "%${cpadding}s█▄▄▄▄▄▄▄▄███████\n"
+        sleep 0.1
+        clear
+        printf "%${cpadding}s█▀▀▀▀▀▀▀▀▀▀▀▀▀▀█\n"
+        printf "%${cpadding}s█▄▄▄▄▄▄▄▄▄▄▄▄▄▄█\033[?25h\n"
+        clear
+    done
 }
 
 # This is a form, and it is customizable changing colors and the underline
@@ -180,7 +218,7 @@ Form(){
         temp="$i"
         wc=${#temp}
         finendpadd=$(( ($max-$wc)-5 ))
-        printf "%${fpadding}s$On_Green$UBlack %${finstartpadd}s %s%${finendpadd}s$On_Green" "" "$temp"
+        printf "%${fpadding}s$BIGreen %${finstartpadd}s %s%${finendpadd}s$clear" "" "$temp"
         echo "$end"
         local fline="╚"
         if [ "$cont" -eq "$lineno" ]
@@ -201,7 +239,7 @@ Form(){
 
 Fillaform(){
     local lineno="$#"
-    local max=0
+    local max=50
     for i in "$@"
     do      
         local temp="$i"
@@ -232,7 +270,7 @@ Fillaform(){
         cont=$(($cont+1))
         wc=${#temp}
         finendpadd=$(( ($max-$wc)-5 ))
-        printf "%${fpadding}s$BIGreen %${finstartpadd}s %s%${finendpadd}s$clear" "" "$temp"
+        printf "%${fpadding}s$BIGreen %${finstartpadd}s %s%${finendpadd}s" "" "$temp"
         echo "$end"
         local fline="╚"
         if [ "$cont" -eq "$lineno" ]
@@ -267,22 +305,6 @@ Linspace(){
     done
 }
 
-Tables(){
-    num_rows="$1"
-    num_columns="$2"
-    local var="$3"
-    declare -a rowh
-    declare -a colh
-    readarray tb <<< "$var"
-
-}
-
-Tables_show(){
-    for ((i=0;i<num_rows;i++)) do
-        echo "${colh[$i]} ${tb[$i]}"
-    done
-}
-
-printf "$On_Green"
+printf "$BIGreen"
 
 # ekahPruthvi - SCU

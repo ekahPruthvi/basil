@@ -216,7 +216,7 @@ Form(){
 
 Fillaform(){
     local lineno="$#"
-    local max=0
+    local max=50
     for i in "$@"
     do      
         local temp="$i"
@@ -279,22 +279,6 @@ Linspace(){
     for line in $(seq 0 "$1")
     do
         echo ""
-    done
-}
-
-Tables(){
-    num_rows="$1"
-    num_columns="$2"
-    local var="$3"
-    declare -a rowh
-    declare -a colh
-    readarray tb <<< "$var"
-
-}
-
-Tables_show(){
-    for ((i=0;i<num_rows;i++)) do
-        echo "${colh[$i]} ${tb[$i]}"
     done
 }
 
