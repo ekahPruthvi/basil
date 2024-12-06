@@ -1,3 +1,3 @@
 #!/bin/bash
 
-# INSTALLER for COOK
+# INSTALLER for basil
