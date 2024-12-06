@@ -1,19 +1,19 @@
 #!/bin/bash
 
 ######################################################################################
-# chessBasil is the backend UI toolkit for shell scripting[Black&White MODE]         #
+# ancientBasil is the backend UI toolkit for shell scripting[RETRO MODE]             #
 # This file can be sourced and used for any shell script                             #
 # CWRITE - ekahPruthvi                                                               #
 ######################################################################################
 
 # Reset
-clear='\033[1;92m'       # Text Reset
+clear='\033[0m\033[1;92m'       # Text Reset
 
 
 # Regular Colors
 Black='\033[0;30m'        # Black
 Red='\033[0;31m'          # Red
-Green='\033[0;32m'        # Green
+Green='\033[1;92m'        # Green
 Yellow='\033[0;33m'       # Yellow
 Blue='\033[0;34m'         # Blue
 Purple='\033[0;35m'       # Purple
@@ -46,7 +46,7 @@ TPink='\033[2;95m'        # light Magenta
 # Italics
 SBlack='\033[3;30m'       # Black
 SRed='\033[3;31m'         # Red
-SGreen='\033[3;32m'       # Green
+SGreen='\033[1;92m'       # Green
 SYellow='\033[3;33m'      # Yellow
 SBlue='\033[3;34m'        # Blue
 SPurple='\033[3;35m'      # Purple
@@ -80,7 +80,7 @@ On_Pink='\033[105m'       # light Magenta
 # High Intensity
 IBlack='\033[0;90m'       # Black
 IRed='\033[0;91m'         # Red
-IGreen='\033[0;92m'       # Green
+IGreen='\033[1;92m'       # Green
 IYellow='\033[0;93m'      # Yellow
 IBlue='\033[0;94m'        # Blue
 IPurple='\033[0;95m'      # Purple
@@ -118,7 +118,8 @@ Head_text() {
     local hwidth=$(tput cols)
     local hpadding=$(( (hwidth - ${#htext}) / 2 ))
     local hendpad=$((( (hwidth - ${#htext}) / 2 )-1))
-    printf "$BIGreen %${hpadding}s         ⮟\n"
+    local varpad=$( shuf -i 3-37 -n 1 )
+    printf "$BIGreen %${hpadding}s%${varpad}s⮟\n"
     printf "%${hpadding}s┌──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┐\n"
     printf "%${hpadding}s0     1     2     3     4     5     6     7\n"
 }
@@ -148,34 +149,34 @@ Line_sweep(){
     local ctext="█▀▀▀▀▀▀▀▀▀▀▀▀▀▀█"
     local cwidth=$(tput cols)
     local cpadding=$(( (cwidth - ${#ctext}) / 2 ))
-    for ((i=0;i<5;i++)) do
+    for ((i=0;i<3;i++)) do
         printf "%${cpadding}s\033[?25l█▀▀▀▀▀▀▀▀▀▀▀▀▀▀█\n"
         printf "%${cpadding}s█▄▄▄▄▄▄▄▄▄▄▄▄▄▄█\n"
-        sleep 0.02
+        sleep 0.01
         clear
         printf "%${cpadding}s███████▀▀▀▀▀▀▀▀█\n"
         printf "%${cpadding}s███████▄▄▄▄▄▄▄▄█\n"
-        sleep 0.1
+        sleep 0.09
         clear
         printf "%${cpadding}s█▀██████▀▀▀▀▀▀▀█\n"
         printf "%${cpadding}s█▄██████▄▄▄▄▄▄▄█\n"
-        sleep 0.1
+        sleep 0.09
         clear
         printf "%${cpadding}s█▀▀██████▀▀▀▀▀▀█\n"
         printf "%${cpadding}s█▄▄██████▄▄▄▄▄▄█\n"
-        sleep 0.1
+        sleep 0.09
         clear
         printf "%${cpadding}s█▀▀▀▀▀██████▀▀▀█\n"
         printf "%${cpadding}s█▄▄▄▄▄██████▄▄▄█\n"
-        sleep 0.1
+        sleep 0.09
         clear
         printf "%${cpadding}s█▀▀▀▀▀▀▀██████▀█\n"
         printf "%${cpadding}s█▄▄▄▄▄▄▄██████▄█\n"
-        sleep 0.1
+        sleep 0.09
         clear
         printf "%${cpadding}s█▀▀▀▀▀▀▀▀███████\n"
         printf "%${cpadding}s█▄▄▄▄▄▄▄▄███████\n"
-        sleep 0.1
+        sleep 0.09
         clear
         printf "%${cpadding}s█▀▀▀▀▀▀▀▀▀▀▀▀▀▀█\n"
         printf "%${cpadding}s█▄▄▄▄▄▄▄▄▄▄▄▄▄▄█\033[?25h\n"

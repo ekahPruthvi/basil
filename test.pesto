@@ -24,7 +24,7 @@ Form "Forms have fixed width" "but if The charecters exceed the limit, the width
 Linspace 1
 
 Form "Testing retaing behaviour of Forms" "Here No color value hav been given" "so, The old values retain"
-Linspace 2
+Linspace 1
 
 bg="$On_Pink"
 ul="$TBlack"
