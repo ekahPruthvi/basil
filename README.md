@@ -7,6 +7,8 @@ presently it has very less widgets more are yet to come as this project is still
 it uses a simple format called pesto similar to shell.
 (written on bash)
 
+pesto is compiled into a usable shell script by `cook`
+
 
 
 ## widgets
@@ -158,6 +160,42 @@ Linspace 3
 
 Foot && read && pkill kitty
 ```
+
+
+## Installation
+
+- To install Basil clone the repository and run install.sh
+```bash
+git clone https://github.com/ekahPruthvi/basil.git
+cd basil
+./install.sh
+```
+
+### Uninstallation
+```
+cook -del
+```
+
+It will ask for conformation and the uninstall basil completely.
+
+## Usage
+
+After writing the pesto file, The pastas have to be cooked ;)
+
+to cook goto your terminal/console and use cook.
+
+```
+cook [option] <file.pesto>
+```
+use only `cook` for the help message
+
+>example:\
+>        cook "~/Documents/example.pesto"\
+>or\
+>        cook -r "example.pesto"
+
+This will return `ui.sh` in the working directory which can be run directly!!
+
 
 ## Colorname
 
