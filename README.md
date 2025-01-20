@@ -1,6 +1,8 @@
 
 # Basil
 
+WIP project ⚠️
+
 Basil is a UI library for bash, similar to ncurses
 presently it has very less widgets more are yet to come as this project is still wip.
 
