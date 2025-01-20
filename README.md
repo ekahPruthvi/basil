@@ -4,7 +4,8 @@
 WIP project ⚠️
 
 Basil is a UI library for bash, similar to ncurses
-presently it has very less widgets more are yet to come as this project is still wip.
+presently it has very less widgets more are yet to come.\
+and feel free to contribute. Thank you!!
 
 it uses a simple format called pesto similar to shell.
 (written on bash)
