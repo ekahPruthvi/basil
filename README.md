@@ -94,6 +94,12 @@ Links "https://github.com/ekahPruthvi" "This is a link"
 
 ### Example
 
+![image](https://github.com/user-attachments/assets/5a439cae-74f1-44d3-a639-b97a218979aa)
+
+![image](https://github.com/user-attachments/assets/1cb4ec8b-a915-4bf8-8616-d2c7b9f1c896)
+
+
+
 ```bash
 Line_sweep
 # It is mandetory to give the color values if once chnaged, 
