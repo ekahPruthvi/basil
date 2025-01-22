@@ -1,4 +1,5 @@
 #!/bin/bash
+#--------------------Author:ekahPruthvi--------------------#
 Center_text() {
     local ctext="$1"
     local cwidth=$(tput cols)
