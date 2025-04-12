@@ -88,7 +88,7 @@ Links "https://github.com/ekahPruthvi" "This is a link"
 
 ## Pesto
 
-> Pesto is the inhouse recomended format for writing for basil.
+> Pesto is the inhouse recomended format for writing basil.
 
 - `Linspace 2` after every widgets
 - use comments
