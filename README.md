@@ -183,7 +183,7 @@ It will ask for conformation and the uninstall basil completely.
 
 ## Usage
 
-After writing the pesto file, The pastas have to be cooked ;)
+After writing pesto, The pasta has to be cooked ;)
 
 to cook goto your terminal/console and use cook.
 
